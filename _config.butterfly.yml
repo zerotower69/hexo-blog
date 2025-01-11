@@ -11,7 +11,7 @@
 
 nav:
   # Navigation bar logo image
-  logo: /img/butterfly-icon.png
+  logo: https://avatars.githubusercontent.com/u/49011468?v=4
   display_title: true
   # Whether to fix navigation bar
   fixed: false
@@ -47,8 +47,9 @@ code_blocks:
 # Formal:
 #   icon: link || the description || color
 social:
-  # fab fa-github: https://github.com/xxxxx || Github || '#24292e'
-  # fas fa-envelope: mailto:xxxxxx@gmail.com || Email || '#4a7dbe'
+  fab fa-github: https://github.com/zerotower69 || Github || '#24292e'
+  fas fa-envelope: mailto:zerotower@163.com || Email || '#4a7dbe'
+  fab fa-qq : tencent://message/?uin=1761552891&Site=qq&Menu=yes || QQ || '#4a7dbe'
 
 # --------------------------------------
 # Image Settings
@@ -57,8 +58,8 @@ social:
 favicon: /img/favicon.png
 
 avatar:
-  img: /img/butterfly-icon.png
-  effect: false
+  img: https://avatars.githubusercontent.com/u/49011468?v=4
+  effect: true
 
 # Disable all banner images
 disable_top_img: false
