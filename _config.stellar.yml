@@ -1,0 +1,6 @@
+comments:
+  series: twikoo
+
+  twikoo:
+    js: https://gcore.jsdelivr.net/npm/twikoo@1.6.8/dist/twikoo.all.min.js # 建议锁定版本
+    envId: https://blog-comment-zerotowers-projects.vercel.app/ # twikoo云函数,
