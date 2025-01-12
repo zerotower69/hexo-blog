@@ -1,14 +1,13 @@
 ---
 abbrlink: ''
-categories:
-- - 组件库文档搭建
+categories: []
 date: '2025-01-11T23:37:01.971256+08:00'
 tags:
 - nextjs
 - react
 - 组件库
 title: 'Next搭建组件库文档（二）- 支持markdown动态渲染 '
-updated: '2025-01-11T23:37:03.282+08:00'
+updated: '2025-01-12T11:15:54.949+08:00'
 ---
 # 导读
 
