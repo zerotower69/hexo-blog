@@ -11,17 +11,23 @@ updated: '2025-01-13T01:03:41.337+08:00'
 ---
 # 导读
 
-**最近一直使用Nest.js和Next.js做项目开发，这两款都是非常优秀的开源框架，且对于主要从事前端开发工作的我来说，由于其都基于npm生态，使用起来也比其他语言容易得多。Nextjs其主要是一款全栈的SSR的框架，而Nest.js则是纯后端的框架。对于Next.js，官方告诉我们可以在/api路径下自定义常规的api接口，但是由于middleware仅仅支持**`Edge Runtime`这一运行时，很多功能上比较受限，加之/api路径和文件即路由的开发范式只适合简单接口的开发，并不适合大多数情况的接口开发。因此，我会使用Nest.jsl来完成后端接口的开发。然而，新的问题又随之出现。如果分开项目开发，且都采用TypeScript以获得完善的类型提示，就会导致两侧都需要定义**相同但又不同**的ts定义，十分地麻烦。这时，笔者我想到，Nest.js和Next.js本质上都是一个node创建的服务器，不如将Next.js集成到Nest.js当中，让Nest.js提供给Next.js node服务器的能力，说干就干，让我开始尝试吧！
+**最近一直使用nestjs和nextjs做项目开发，这两款都是非常优秀的开源框架，且对于主要从事前端开发工作的我来说，由于其都基于npm生态，使用起来也比其他语言容易得多。Nextjs其主要是一款全栈的SSR的框架，而Nest.js则是纯后端的框架。对于Next.js，官方告诉我们可以在/api路径下自定义常规的api接口，但是由于middleware仅仅支持**`Edge Runtime`这一运行时，很多功能上比较受限，加之/api路径和文件即路由的开发范式只适合简单接口的开发，并不适合大多数情况的接口开发。因此，我会使用Nest.jsl来完成后端接口的开发。然而，新的问题又随之出现。如果分开项目开发，且都采用TypeScript以获得完善的类型提示，就会导致两侧都需要定义**相同但又不同**的ts定义，十分地麻烦。这时，笔者我想到，Nest.js和Next.js本质上都是一个node创建的服务器，不如将Next.js集成到Nest.js当中，让Nest.js提供给Next.js node服务器的能力，说干就干，让我开始尝试吧！
 
 # 创建一个简单的nest服务。
 
-<pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" contenteditable="false" lang="bash" cid="n89" mdtype="fences"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"><div><div class="CodeMirror-lines" role="presentation"><div role="presentation"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor"></div></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">nest new nest-with-next</span></pre></div></div></div></div></div></div><div></div></div></div></pre>
+```
+nest new nest-with-next
+```
 
 ![image-20250112203514890](https://static.zerotower.cn/images/2025/01/157ce1303474fdc713e303b037eb1e63.webp)
 
 # 引入next相关依赖和启动命令依赖库
 
-<pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" contenteditable="false" lang="bash" cid="n92" mdtype="fences"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"><div><div class="CodeMirror-lines" role="presentation"><div role="presentation"><div class="CodeMirror-measure"><pre><span></span></pre></div><div class="CodeMirror-measure"></div><div></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor"></div></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">pnpm add next react react-dom</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">pnpm add cross-env ts-node-dev ts-node @types/react <span class="cm-attribute">-D</span></span></pre><div class=""><pre class=" CodeMirror-line " role="presentation"><span role="presentation">pnpm add tailwindcss postcss autoprefixer <span class="cm-attribute">-D</span></span></pre></div></div></div></div></div></div><div></div></div></div></pre>
+```
+pnpm add next react react-dom
+pnpm add cross-env ts-node-dev ts-node @types/react -D
+pnpm add tailwindcss postcss autoprefixer -D
+```
 
 # 新建页面
 
@@ -29,11 +35,19 @@ updated: '2025-01-13T01:03:41.337+08:00'
 
 `app/page.tsx`
 
-<pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" contenteditable="false" lang="tsx" cid="n95" mdtype="fences"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="tsx"><div><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"><div><div class="CodeMirror-lines" role="presentation"><div role="presentation"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor"></div></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">export</span> <span class="cm-keyword">default</span> <span class="cm-keyword">function</span> <span class="cm-def">Page</span>() {</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-keyword">return</span> <span class="cm-tag cm-bracket"><</span><span class="cm-tag">div</span> <span class="cm-attribute">className</span>=<span class="cm-string">"flex"</span><span class="cm-tag cm-bracket">></span>Page<span class="cm-tag cm-bracket"></</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">></span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre></div></div></div></div></div><div></div></div></div></pre>
+```
+export default function Page() {
+  return <div className="flex">Page</div>;
+}
+```
 
 ## app/dashboard/page.tsx
 
-<pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" contenteditable="false" lang="tsx" cid="n97" mdtype="fences"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="tsx"><div><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"><div><div class="CodeMirror-lines" role="presentation"><div role="presentation"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor"></div></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">export</span> <span class="cm-keyword">default</span> <span class="cm-keyword">function</span> <span class="cm-def">Page</span>() {</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-keyword">return</span> <span class="cm-tag cm-bracket"><</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">></span>dashboard<span class="cm-tag cm-bracket"></</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">></span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre></div></div></div></div></div><div></div></div></div></pre>
+```
+export default function Page() {
+  return <div>dashboard</div>;
+}
+```
 
 # 分析如何使用nest启动
 
@@ -41,7 +55,7 @@ updated: '2025-01-13T01:03:41.337+08:00'
 
 ![image-20250112234104348](https://static.zerotower.cn/images/2025/01/d9a48ea9cacf1141a7c0d256d1450b9c.webp)
 
-**在编辑器中查看具体的类型提示。app为**`NextServer`,即创建是一个Next服务，其`getRequestHandler`方法返回一个`handler`句柄，可以用来处理原生node的请求和响应，参考[node官方文档](https://www.nodeapp.cn/http.html#http_class_http_incomingmessage)。
+**在编辑器中查看具体的类型提示。app为 **`NextServer`,即创建是一个Next服务，其`getRequestHandler`方法返回一个`handler`句柄，可以用来处理原生node的请求和响应，参考[node官方文档](https://www.nodeapp.cn/http.html#http_class_http_incomingmessage)。
 
 **由此我们需要获取Nest的请求和响应对象，并按官方的示例传给上述提到的**`handler`句柄。
 
@@ -57,39 +71,222 @@ updated: '2025-01-13T01:03:41.337+08:00'
 
 **可以实现自己的一个中间件**`NextMiddleware`
 
-<pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" contenteditable="false" lang="ts" cid="n108" mdtype="fences"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="ts"><div><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"><div><div class="CodeMirror-lines" role="presentation"><div role="presentation"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor"></div></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">Injectable</span>, <span class="cm-def">NestMiddleware</span> } <span class="cm-keyword">from</span> <span class="cm-string">'@nestjs/common'</span>;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">Request</span>, <span class="cm-def">Response</span>, <span class="cm-def">NextFunction</span> } <span class="cm-keyword">from</span> <span class="cm-string">'express'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">NextService</span> } <span class="cm-keyword">from</span> <span class="cm-string">'./next.service'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">parse</span> } <span class="cm-keyword">from</span> <span class="cm-string">'url'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="" cm-zwsp=""></span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-operator">@</span><span class="cm-variable">Injectable</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">export</span> <span class="cm-keyword">class</span> <span class="cm-def">NextMiddleware</span> <span class="cm-keyword">implements</span> <span class="cm-type">NestMiddleware</span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-property">constructor</span>(<span class="cm-keyword">private</span> <span class="cm-keyword">readonly</span> <span class="cm-def">nextService</span>: <span class="cm-type">NextService</span>) {}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="" cm-zwsp=""></span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-keyword">public</span> <span class="cm-keyword">async</span> <span class="cm-property">use</span>(<span class="cm-def">req</span>: <span class="cm-type">Request</span>, <span class="cm-def">res</span>: <span class="cm-type">Response</span>, <span class="cm-def">next</span>: <span class="cm-type">NextFunction</span>) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-keyword">if</span> (<span class="cm-variable-2">req</span>.<span class="cm-property">url</span>.<span class="cm-property">startsWith</span>(<span class="cm-string">'/api/'</span>)) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      <span class="cm-keyword">return</span> <span class="cm-variable-2">next</span>();</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-keyword">const</span> <span class="cm-def">app</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">nextService</span>.<span class="cm-property">getApp</span>();</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-keyword">const</span> <span class="cm-def">parsedUrl</span> <span class="cm-operator">=</span> <span class="cm-variable">parse</span>(<span class="cm-variable-2">req</span>.<span class="cm-property">url</span>, <span class="cm-atom">true</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-keyword">return</span> <span class="cm-variable-2">app</span>.<span class="cm-property">getRequestHandler</span>()(<span class="cm-variable-2">req</span>, <span class="cm-variable-2">res</span>, <span class="cm-variable-2">parsedUrl</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre></div></div></div></div></div><div></div></div></div></pre>
+```ts
+import { Injectable, NestMiddleware } from '@nestjs/common';
+import { Request, Response, NextFunction } from 'express';
+import { NextService } from './next.service';
+import { parse } from 'url';
+
+@Injectable()
+export class NextMiddleware implements NestMiddleware {
+  constructor(private readonly nextService: NextService) {}
+
+  public async use(req: Request, res: Response, next: NextFunction) {
+    if (req.url.startsWith('/api/')) {
+      return next();
+    }
+    const app = this.nextService.getApp();
+    const parsedUrl = parse(req.url, true);
+    return app.getRequestHandler()(req, res, parsedUrl);
+  }
+}
+```
 
 `app`即上文提到的`NextServer`，在整个项目中，我们需要的接口还是/api打头，为此如果请求路径以/api开始，继续由Nest处理（调用next函数），否则交给Next处理(handler句柄传入)。
 
 **上文提到的**`NextService`类实现如下；
 
-<pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" contenteditable="false" lang="ts" cid="n111" mdtype="fences"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="ts"><div><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"><div><div class="CodeMirror-lines" role="presentation"><div role="presentation"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor"></div></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">Injectable</span> } <span class="cm-keyword">from</span> <span class="cm-string">'@nestjs/common'</span>;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">NextServer</span> } <span class="cm-keyword">from</span> <span class="cm-string">'next/dist/server/next'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">Request</span>, <span class="cm-def">Response</span> } <span class="cm-keyword">from</span> <span class="cm-string">'express'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="" cm-zwsp=""></span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-operator">@</span><span class="cm-variable">Injectable</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">export</span> <span class="cm-keyword">class</span> <span class="cm-def">NextService</span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-keyword">private</span> <span class="cm-property">app</span>: <span class="cm-type">NextServer</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="" cm-zwsp=""></span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-keyword">public</span> <span class="cm-property">getApp</span>(): <span class="cm-type">NextServer</span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-keyword">return</span> <span class="cm-keyword">this</span>.<span class="cm-property">app</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="" cm-zwsp=""></span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-keyword">public</span> <span class="cm-property">setApp</span>(<span class="cm-def">app</span>: <span class="cm-type">NextServer</span>): <span class="cm-type">void</span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-keyword">this</span>.<span class="cm-property">app</span> <span class="cm-operator">=</span> <span class="cm-variable-2">app</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="" cm-zwsp=""></span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-keyword">public</span> <span class="cm-property">render</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-def">req</span>: <span class="cm-type">Request</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-def">res</span>: <span class="cm-type">Response</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-def">pathname</span>: <span class="cm-type">string</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-def">query</span><span class="cm-operator">?</span>: <span class="cm-type">any</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  ): <span class="cm-type">Promise</span><span class="cm-operator"><</span><span class="cm-type">void</span><span class="cm-operator">></span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-keyword">return</span> <span class="cm-keyword">this</span>.<span class="cm-property">app</span>.<span class="cm-property">render</span>(<span class="cm-variable-2">req</span>, <span class="cm-variable-2">res</span>, <span class="cm-variable-2">pathname</span>, <span class="cm-variable-2">query</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="" cm-zwsp=""></span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-keyword">public</span> <span class="cm-property">renderError</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-def">req</span>: <span class="cm-type">Request</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-def">res</span>: <span class="cm-type">Response</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-def">err</span>: <span class="cm-type">Error</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-def">pathname</span>: <span class="cm-type">string</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-def">query</span><span class="cm-operator">?</span>: <span class="cm-type">any</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  ): <span class="cm-type">Promise</span><span class="cm-operator"><</span><span class="cm-type">void</span><span class="cm-operator">></span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-keyword">return</span> <span class="cm-keyword">this</span>.<span class="cm-property">app</span>.<span class="cm-property">renderError</span>(<span class="cm-variable-2">err</span>, <span class="cm-variable-2">req</span>, <span class="cm-variable-2">res</span>, <span class="cm-variable-2">pathname</span>, <span class="cm-variable-2">query</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre></div></div></div></div></div><div></div></div></div></pre>
+```ts
+import { Injectable } from '@nestjs/common';
+import { NextServer } from 'next/dist/server/next';
+import { Request, Response } from 'express';
+
+@Injectable()
+export class NextService {
+  private app: NextServer;
+
+  public getApp(): NextServer {
+    return this.app;
+  }
+
+  public setApp(app: NextServer): void {
+    this.app = app;
+  }
+
+  public render(
+    req: Request,
+    res: Response,
+    pathname: string,
+    query?: any,
+  ): Promise<void> {
+    return this.app.render(req, res, pathname, query);
+  }
+
+  public renderError(
+    req: Request,
+    res: Response,
+    err: Error,
+    pathname: string,
+    query?: any,
+  ): Promise<void> {
+    return this.app.renderError(err, req, res, pathname, query);
+  }
+}
+```
 
 **再创建一个**`NextModule`供`AppModule`中调用
 
-<pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" contenteditable="false" lang="ts" cid="n113" mdtype="fences"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="ts"><div><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"><div><div class="CodeMirror-lines" role="presentation"><div role="presentation"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor"></div></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">Module</span> } <span class="cm-keyword">from</span> <span class="cm-string">'@nestjs/common'</span>;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">NextService</span> } <span class="cm-keyword">from</span> <span class="cm-string">'./next.service'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">NextController</span> } <span class="cm-keyword">from</span> <span class="cm-string">'./next.controller'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> <span class="cm-def">next</span>, { <span class="cm-def">NextServer</span>, <span class="cm-def">NextServerOptions</span> } <span class="cm-keyword">from</span> <span class="cm-string">'next/dist/server/next'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="" cm-zwsp=""></span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-operator">@</span><span class="cm-variable">Module</span>({</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-property">controllers</span>: [<span class="cm-variable">NextController</span>],</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-property">providers</span>: [<span class="cm-variable">NextService</span>],</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-property">exports</span>: [<span class="cm-variable">NextService</span>],</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">})</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">export</span> <span class="cm-keyword">class</span> <span class="cm-def">NextModule</span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-property">constructor</span>(<span class="cm-keyword">private</span> <span class="cm-keyword">readonly</span> <span class="cm-def">next</span>: <span class="cm-type">NextService</span>) {}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="" cm-zwsp=""></span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-keyword">public</span> <span class="cm-keyword">async</span> <span class="cm-property">prepare</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-def">options</span><span class="cm-operator">?</span>: <span class="cm-type">NextServerOptions</span> <span class="cm-operator">&</span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      <span class="cm-property">turbo</span><span class="cm-operator">?</span>: <span class="cm-type">boolean</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      <span class="cm-property">turbopack</span><span class="cm-operator">?</span>: <span class="cm-type">boolean</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    },</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  ) {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-keyword">const</span> <span class="cm-def">app</span> <span class="cm-operator">=</span> <span class="cm-variable">next</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      <span class="cm-variable">Object</span>.<span class="cm-property">assign</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">          <span class="cm-property">dev</span>: <span class="cm-variable">process</span>.<span class="cm-property">env</span>.<span class="cm-property">NODE_ENV</span> <span class="cm-operator">!==</span> <span class="cm-string">'production'</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">          <span class="cm-property">dir</span>: <span class="cm-variable">process</span>.<span class="cm-property">cwd</span>(),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        },</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        <span class="cm-variable-2">options</span> <span class="cm-operator">||</span> {},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      ),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    ) <span class="cm-keyword">as</span> <span class="cm-type">NextServer</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-keyword">return</span> <span class="cm-variable-2">app</span>.<span class="cm-property">prepare</span>().<span class="cm-property">then</span>(() <span class="cm-operator">=></span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      <span class="cm-keyword">this</span>.<span class="cm-property">next</span>.<span class="cm-property">setApp</span>(<span class="cm-variable-2">app</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      <span class="cm-variable">console</span>.<span class="cm-property">log</span>(<span class="cm-string">'Next.js app prepared'</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    });</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="" cm-zwsp=""></span></span></pre></div></div></div></div></div><div></div></div></div></pre>
+```ts
+import { Module } from '@nestjs/common';
+import { NextService } from './next.service';
+import { NextController } from './next.controller';
+import next, { NextServer, NextServerOptions } from 'next/dist/server/next';
+
+@Module({
+  controllers: [NextController],
+  providers: [NextService],
+  exports: [NextService],
+})
+export class NextModule {
+  constructor(private readonly next: NextService) {}
+
+  public async prepare(
+    options?: NextServerOptions & {
+      turbo?: boolean;
+      turbopack?: boolean;
+    },
+  ) {
+    const app = next(
+      Object.assign(
+        {
+          dev: process.env.NODE_ENV !== 'production',
+          dir: process.cwd(),
+        },
+        options || {},
+      ),
+    ) as NextServer;
+    return app.prepare().then(() => {
+      this.next.setApp(app);
+      console.log('Next.js app prepared');
+    });
+  }
+}
+
+```
 
 **最终在**`app.module.ts`中调用，并加载上述的`NextMiddleware`中间件。
 
-<pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" contenteditable="false" lang="ts" cid="n117" mdtype="fences"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="ts"><div><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"><div><div class="CodeMirror-lines" role="presentation"><div role="presentation"><div class="CodeMirror-measure"><pre><span></span></pre></div><div class="CodeMirror-measure"></div><div></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor"></div></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">MiddlewareConsumer</span>, <span class="cm-def">Module</span>, <span class="cm-def">NestModule</span> } <span class="cm-keyword">from</span> <span class="cm-string">'@nestjs/common'</span>;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">AppController</span> } <span class="cm-keyword">from</span> <span class="cm-string">'./app.controller'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">AppService</span> } <span class="cm-keyword">from</span> <span class="cm-string">'./app.service'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">NextModule</span> } <span class="cm-keyword">from</span> <span class="cm-string">'./next/next.module'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">NextMiddleware</span> } <span class="cm-keyword">from</span> <span class="cm-string">'./next/next.middleware'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="" cm-zwsp=""></span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-operator">@</span><span class="cm-variable">Module</span>({</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-property">imports</span>: [<span class="cm-variable">NextModule</span>],</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-property">controllers</span>: [<span class="cm-variable">AppController</span>],</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-property">providers</span>: [<span class="cm-variable">AppService</span>],</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">})</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">export</span> <span class="cm-keyword">class</span> <span class="cm-def">AppModule</span> <span class="cm-keyword">implements</span> <span class="cm-type">NestModule</span> {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-property">configure</span>(<span class="cm-def">consumer</span>: <span class="cm-type">MiddlewareConsumer</span>) {</span></pre><div class=""><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-variable-2">consumer</span>.<span class="cm-property">apply</span>(<span class="cm-variable">NextMiddleware</span>).<span class="cm-property">forRoutes</span>(<span class="cm-string">'/'</span>);</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="" cm-zwsp=""></span></span></pre></div></div></div></div></div><div></div></div></div></pre>
+```ts
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { NextModule } from './next/next.module';
+import { NextMiddleware } from './next/next.middleware';
+
+@Module({
+  imports: [NextModule],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(NextMiddleware).forRoutes('/');
+  }
+}
+
+```
 
 **修改**`main.ts`，确保相关中间件被加载后才启动服务
 
-<pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" contenteditable="false" lang="ts" cid="n119" mdtype="fences"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="ts"><div><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"><div><div class="CodeMirror-lines" role="presentation"><div role="presentation"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor"></div></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">NestFactory</span> } <span class="cm-keyword">from</span> <span class="cm-string">'@nestjs/core'</span>;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">AppModule</span> } <span class="cm-keyword">from</span> <span class="cm-string">'./app.module'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">import</span> { <span class="cm-def">NextModule</span> } <span class="cm-keyword">from</span> <span class="cm-string">'./next/next.module'</span>;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="" cm-zwsp=""></span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-keyword">async</span> <span class="cm-keyword">function</span> <span class="cm-def">bootstrap</span>() {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-keyword">const</span> <span class="cm-def">app</span> <span class="cm-operator">=</span> <span class="cm-keyword">await</span> <span class="cm-variable">NestFactory</span>.<span class="cm-property">create</span>(<span class="cm-variable">AppModule</span>);</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-variable-2">app</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    .<span class="cm-property">get</span>(<span class="cm-variable">NextModule</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    .<span class="cm-property">prepare</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    .<span class="cm-property">then</span>(() <span class="cm-operator">=></span> <span class="cm-variable-2">app</span>.<span class="cm-property">listen</span>(<span class="cm-variable">process</span>.<span class="cm-property">env</span>.<span class="cm-property">PORT</span> <span class="cm-operator">??</span> <span class="cm-number">3000</span>));</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-variable">bootstrap</span>();</span></pre></div></div></div></div></div><div></div></div></div></pre>
+```ts
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { NextModule } from './next/next.module';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  app
+    .get(NextModule)
+    .prepare()
+    .then(() => app.listen(process.env.PORT ?? 3000));
+}
+bootstrap();
+```
 
 **此时的next已经实现了集成，但是原油的**`nest start`无法启动next的，且next部分的编译方式和nest部分的编译方式有所区别。为此使用：
 
-<pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" contenteditable="false" lang="bash" cid="n122" mdtype="fences"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"><div><div class="CodeMirror-lines" role="presentation"><div role="presentation"><div class="CodeMirror-measure"><pre><span></span></pre></div><div class="CodeMirror-measure"></div><div></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor"></div></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">cross-env tsnd <span class="cm-attribute">--project</span> tsconfig.server.json <span class="cm-attribute">--ignore-watch</span> .next <span class="cm-attribute">--watch</span> next.config.ts <span class="cm-attribute">--cls</span> src/main.ts</span></pre></div></div></div></div></div></div><div></div></div></div></pre>
+```bash
+cross-env tsnd --project tsconfig.server.json --ignore-watch .next --watch next.config.ts --cls src/main.ts
+```
 
 **启动项目。**
 
 `tsconfig.json`
 
-<pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" contenteditable="false" lang="json" cid="n127" mdtype="fences"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="json"><div><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"><div><div class="CodeMirror-lines" role="presentation"><div role="presentation"><div class="CodeMirror-measure"><pre></pre></div><div class="CodeMirror-measure"></div><div></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor"></div></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">{</span></pre></div><div class=""><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-string cm-property">"compilerOptions"</span>: {</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"jsx"</span>: <span class="cm-string">"preserve"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"module"</span>: <span class="cm-string">"ESNext"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"target"</span>: <span class="cm-string">"ESNext"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"lib"</span>: [<span class="cm-string">"dom"</span>, <span class="cm-string">"dom.iterable"</span>, <span class="cm-string">"esnext"</span>],</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"moduleResolution"</span>: <span class="cm-string">"node"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"declaration"</span>: <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"removeComments"</span>: <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"emitDecoratorMetadata"</span>: <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"experimentalDecorators"</span>: <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"allowSyntheticDefaultImports"</span>: <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"sourceMap"</span>: <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"outDir"</span>: <span class="cm-string">"./dist"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"baseUrl"</span>: <span class="cm-string">"./"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"incremental"</span>: <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"skipLibCheck"</span>: <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"strictNullChecks"</span>: <span class="cm-atom">false</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"noImplicitAny"</span>: <span class="cm-atom">false</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"strictBindCallApply"</span>: <span class="cm-atom">false</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"forceConsistentCasingInFileNames"</span>: <span class="cm-atom">false</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"noFallthroughCasesInSwitch"</span>: <span class="cm-atom">false</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"allowJs"</span>: <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"strict"</span>: <span class="cm-atom">false</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"noEmit"</span>: <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"esModuleInterop"</span>: <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"resolveJsonModule"</span>: <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"isolatedModules"</span>: <span class="cm-atom">true</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"plugins"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">        <span class="cm-string cm-property">"name"</span>: <span class="cm-string">"next"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">      }</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    ]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  },</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-string cm-property">"include"</span>: [</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string">"**/*.ts"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string">"**/*.tsx"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string">"next-env.d.ts"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string">".next/types/**/*.ts"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string">"postcss.config.ts"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string">"tailwind.config.ts"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  ],</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-string cm-property">"exclude"</span>: [<span class="cm-string">"node_modules"</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre><div class=""><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span cm-text="" cm-zwsp=""></span></span></pre></div></div></div></div></div></div><div></div></div></div></pre>
+```json
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "moduleResolution": "node",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "allowJs": true,
+    "strict": false,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "postcss.config.ts",
+    "tailwind.config.ts"
+  ],
+  "exclude": ["node_modules"]
+}
+
+```
 
 `tsconfig.server.json`
 
-<pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" contenteditable="false" lang="json" cid="n136" mdtype="fences"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="json"><div><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"><div><div class="CodeMirror-lines" role="presentation"><div role="presentation"><div class="CodeMirror-measure"><pre><span></span></pre></div><div class="CodeMirror-measure"></div><div></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor"></div></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">{</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-string cm-property">"extends"</span>: <span class="cm-string">"./tsconfig.json"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-string cm-property">"compilerOptions"</span>: {</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"module"</span>: <span class="cm-string">"commonjs"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"outDir"</span>: <span class="cm-string">"dist"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"target"</span>: <span class="cm-string">"es2017"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"isolatedModules"</span>: <span class="cm-atom">false</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">    <span class="cm-string cm-property">"noEmit"</span>: <span class="cm-atom">false</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  },</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-string cm-property">"include"</span>: [<span class="cm-string">"src/**/*.ts"</span>],</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation">  <span class="cm-string cm-property">"exclude"</span>: [<span class="cm-string">"node_modules"</span>, <span class="cm-string">"src/app"</span>,<span class="cm-string">"src/components"</span>, <span class="cm-string">".next"</span>]</span></pre><div class=""><pre class=" CodeMirror-line " role="presentation"><span role="presentation">}</span></pre></div></div></div></div></div></div><div></div></div></div></pre>
+```json
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "dist",
+    "target": "es2017",
+    "isolatedModules": false,
+    "noEmit": false
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "src/app","src/components", ".next"]
+}
+```
 
 **使用**`pnpm dev`启动
 
@@ -105,13 +302,19 @@ updated: '2025-01-13T01:03:41.337+08:00'
 
 **为此新增一个**`dev:tailwindcss`命令
 
-<pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" contenteditable="false" lang="bash" cid="n151" mdtype="fences"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"><div><div class="CodeMirror-lines" role="presentation"><div role="presentation"><div class="CodeMirror-measure"><pre><span></span></pre></div><div class="CodeMirror-measure"></div><div></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor"></div></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">tailwindcss <span class="cm-attribute">-i</span> ./src/app/globals.css <span class="cm-attribute">-o</span> ./src/app/output.css <span class="cm-attribute">--watch</span></span></pre></div></div></div></div></div></div><div></div></div></div></pre>
+```bash
+tailwindcss -i ./src/app/globals.css -o ./src/app/output.css --watch
+```
 
 **安装**[concurrently](https://www.npmjs.com/package/concurrently)用于同时执行多个命令`dev:all`
 
-<pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" contenteditable="false" lang="bash" cid="n155" mdtype="fences"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"><div><div class="CodeMirror-lines" role="presentation"><div role="presentation"><div class="CodeMirror-measure"><pre><span></span></pre></div><div class="CodeMirror-measure"></div><div></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor"></div></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation">pnpm add concurrently <span class="cm-attribute">-D</span></span></pre></div></div></div></div></div></div><div></div></div></div></pre>
+```bash
+pnpm add concurrently -D
+```
 
-<pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" contenteditable="false" lang="bash" cid="n157" mdtype="fences"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0"></textarea></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"><div><div class="CodeMirror-lines" role="presentation"><div role="presentation"><div class="CodeMirror-measure"><pre><span></span></pre></div><div class="CodeMirror-measure"></div><div></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor"></div></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation"><span class="cm-string">"concurrently \"npm run dev:tailwind\" \"npm run dev\""</span></span></pre></div></div></div></div></div></div><div></div></div></div></pre>
+```bash
+"concurrently \"npm run dev:tailwind\" \"npm run dev\""
+```
 
 **运行**`pnpm dev:all`后，浏览器显示
 
