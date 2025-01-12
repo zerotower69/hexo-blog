@@ -41,7 +41,7 @@ code_blocks:
   language: true
   # true: shrink the code blocks | false: expand the code blocks | none: expand code blocks and hide the button
   shrink: false
-  fullpage: false
+  fullpage: true
 
 # Social media links
 # Formal:
@@ -55,23 +55,23 @@ social:
 # Image Settings
 # --------------------------------------
 
-favicon: /img/favicon.png
+favicon: https://static.zerotower.cn/images/favicon.ico
 
 avatar:
   img: https://avatars.githubusercontent.com/u/49011468?v=4
-  effect: true
+  effect: false
 
 # Disable all banner images
 disable_top_img: false
 
 # If the banner of page not setting, it will show the default_top_img
-default_top_img:
+default_top_img: https://w.wallhaven.cc/full/d6/wallhaven-d6y12l.jpg
 
 # The banner image of index page
-index_img:
+index_img: https://w.wallhaven.cc/full/d6/wallhaven-d6y12l.jpg
 
 # The banner image of archive page
-archive_img:
+archive_img: https://w.wallhaven.cc/full/d6/wallhaven-d6y12l.jpg
 
 # Note: tag page, not tags page
 tag_img:
@@ -259,8 +259,9 @@ noticeOutdate:
 footer:
   owner:
     enable: true
-    since: 2019
-  custom_text:
+    since: 2024
+  custom_text: <a href="https://beian.miit.gov.cn/"><img class="icp-icon" src="https://beian.miit.gov.cn/favicon.ico"><span>备案号：桂ICP备2024044440号</span></a>
+
   # Copyright of theme and framework
   copyright: true
 
@@ -287,7 +288,7 @@ aside:
       enable: true
       icon: fab fa-github
       text: Follow Me
-      link: https://github.com/xxxxxx
+      link: https://github.com/zerotower69
   card_announcement:
     enable: true
     content: This is my Blog
