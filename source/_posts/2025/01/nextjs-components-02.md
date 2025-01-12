@@ -1,6 +1,8 @@
 ---
 abbrlink: ''
-categories: []
+categories:
+- - nextjs
+- - 搭建组件库文档
 date: '2025-01-11T23:37:01.971256+08:00'
 tags:
 - nextjs
