@@ -18,8 +18,11 @@ nav:
 
 menu:
   首页: / || fas fa-home
-  归档: /category/ || fas fa-archive
-  找文章: /search/ || fas fa-search
+  归档: /categories/ || fas fa-archive
+  找文章 || fas fa-search:
+    按标签: /tags/ || fas fa-tags
+    按分类: /categories/ || fas fa-th
+    按时间: /archives/ || fas fa-clock
   友链: /links/ || fas fa-link
   #   Music: /music/ || fas fa-music
   #   Movie: /movies/ || fas fa-video
