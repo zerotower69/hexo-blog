@@ -123,3 +123,9 @@ githubcalendar:
   api: https://github-calendar-api.meta-code.top/api
   calendar_js: https://cdn.jsdelivr.net/gh/barry-flynn/hexo-github-calendar/hexo_githubcalendar.js
   plus_style: ""
+
+# 博客检索
+algolia:
+  applicationID: 'PXO0ONG3B1'
+  apiKey: 'e01a6c3c003fb0424d8a1f2c2d829a4b'
+  indexName: 'hexo'
