@@ -7,11 +7,11 @@ tags:
 - nestjs
 - nextjs
 title: 使用nestjs启动nextjs
-updated: '2025-01-13T01:03:41.337+08:00'
+updated: '2025-01-13T11:53:53.556+08:00'
 ---
 # 导读
 
-**最近一直使用nestjs和nextjs做项目开发，这两款都是非常优秀的开源框架，且对于主要从事前端开发工作的我来说，由于其都基于npm生态，使用起来也比其他语言容易得多。Nextjs其主要是一款全栈的SSR的框架，而Nest.js则是纯后端的框架。对于Next.js，官方告诉我们可以在/api路径下自定义常规的api接口，但是由于middleware仅仅支持**`Edge Runtime`这一运行时，很多功能上比较受限，加之/api路径和文件即路由的开发范式只适合简单接口的开发，并不适合大多数情况的接口开发。因此，我会使用Nest.jsl来完成后端接口的开发。然而，新的问题又随之出现。如果分开项目开发，且都采用TypeScript以获得完善的类型提示，就会导致两侧都需要定义**相同但又不同**的ts定义，十分地麻烦。这时，笔者我想到，Nest.js和Next.js本质上都是一个node创建的服务器，不如将Next.js集成到Nest.js当中，让Nest.js提供给Next.js node服务器的能力，说干就干，让我开始尝试吧！
+**最近一直使用Nest.js和Next.js做项目开发，这两款都是非常优秀的开源框架，且对于主要从事前端开发工作的我来说，由于其都基于npm生态，使用起来也比其他语言容易得多。Nextjs其主要是一款全栈的SSR的框架，而Nest.js则是纯后端的框架。对于Next.js，官方告诉我们可以在/api路径下自定义常规的api接口，但是由于middleware仅仅支持**`Edge Runtime`这一运行时，很多功能上比较受限，加之/api路径和文件即路由的开发范式只适合简单接口的开发，并不适合大多数情况的接口开发。因此，我会使用Nest.jsl来完成后端接口的开发。然而，新的问题又随之出现。如果分开项目开发，且都采用TypeScript以获得完善的类型提示，就会导致两侧都需要定义**相同但又不同**的ts定义，十分地麻烦。这时，笔者我想到，Nest.js和Next.js本质上都是一个node创建的服务器，不如将Next.js集成到Nest.js当中，让Nest.js提供给Next.js node服务器的能力，说干就干，让我开始尝试吧！
 
 # 创建一个简单的nest服务。
 
@@ -23,7 +23,7 @@ nest new nest-with-next
 
 # 引入next相关依赖和启动命令依赖库
 
-```
+```bash
 pnpm add next react react-dom
 pnpm add cross-env ts-node-dev ts-node @types/react -D
 pnpm add tailwindcss postcss autoprefixer -D
@@ -35,7 +35,7 @@ pnpm add tailwindcss postcss autoprefixer -D
 
 `app/page.tsx`
 
-```
+```tsx
 export default function Page() {
   return <div className="flex">Page</div>;
 }
@@ -43,7 +43,7 @@ export default function Page() {
 
 ## app/dashboard/page.tsx
 
-```
+```tsx
 export default function Page() {
   return <div>dashboard</div>;
 }
@@ -55,11 +55,11 @@ export default function Page() {
 
 ![image-20250112234104348](https://static.zerotower.cn/images/2025/01/d9a48ea9cacf1141a7c0d256d1450b9c.webp)
 
-**在编辑器中查看具体的类型提示。app为 **`NextServer`,即创建是一个Next服务，其`getRequestHandler`方法返回一个`handler`句柄，可以用来处理原生node的请求和响应，参考[node官方文档](https://www.nodeapp.cn/http.html#http_class_http_incomingmessage)。
+在编辑器中查看具体的类型提示。app为`NextServer`,即创建是一个Next服务，其`getRequestHandler`方法返回一个`handler`句柄，可以用来处理原生node的请求和响应，参考[node官方文档](https://www.nodeapp.cn/http.html#http_class_http_incomingmessage)。
 
-**由此我们需要获取Nest的请求和响应对象，并按官方的示例传给上述提到的**`handler`句柄。
+由此我们需要获取Nest的请求和响应对象，并按官方的示例传给上述提到的`handler`句柄。
 
-**由于nest基础版是默认使用**`express`作为底层框架的，如果使用过express，其是有中间件概念的，通过`app.use()`加载中间件，其原理就是一个函数，接管处理了e xpress中的请求和响应对象，为此nest也会有中间件应许我们处理请求和响应对象。
+由于nest基础版是默认使用`express`作为底层框架的，如果使用过express，其是有中间件概念的，通过`app.use()`加载中间件，其原理就是一个函数，接管处理了e xpress中的请求和响应对象，为此nest也会有中间件应许我们处理请求和响应对象。
 
 [参考nest的官方文档](https://docs.nestjs.com/middleware)。
 
