@@ -1,7 +1,7 @@
 ---
 abbrlink: ''
 categories:
-- - nestjs使用记录
+- - nestjs
 date: '2025-01-13T01:03:39.877828+08:00'
 tags:
 - nestjs
