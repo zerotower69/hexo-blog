@@ -7,7 +7,7 @@ tags:
 - nestjs
 - nextjs
 title: 使用nestjs启动nextjs
-updated: '2025-01-13T11:53:53.556+08:00'
+updated: '2025-01-13T11:58:24.718+08:00'
 ---
 # 导读
 
@@ -33,7 +33,7 @@ pnpm add tailwindcss postcss autoprefixer -D
 
 **新建两个页面后续使用**
 
-`app/page.tsx`
+**app/page.tsx**
 
 ```tsx
 export default function Page() {
@@ -41,7 +41,7 @@ export default function Page() {
 }
 ```
 
-## app/dashboard/page.tsx
+**app/dashboard/page.tsx**
 
 ```tsx
 export default function Page() {
