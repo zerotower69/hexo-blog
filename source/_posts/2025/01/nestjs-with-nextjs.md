@@ -11,7 +11,7 @@ updated: '2025-01-13T11:53:53.556+08:00'
 ---
 # 导读
 
-**最近一直使用Nest.js和Next.js做项目开发，这两款都是非常优秀的开源框架，且对于主要从事前端开发工作的我来说，由于其都基于npm生态，使用起来也比其他语言容易得多。Nextjs其主要是一款全栈的SSR的框架，而Nest.js则是纯后端的框架。对于Next.js，官方告诉我们可以在/api路径下自定义常规的api接口，但是由于middleware仅仅支持**`Edge Runtime`这一运行时，很多功能上比较受限，加之/api路径和文件即路由的开发范式只适合简单接口的开发，并不适合大多数情况的接口开发。因此，我会使用Nest.jsl来完成后端接口的开发。然而，新的问题又随之出现。如果分开项目开发，且都采用TypeScript以获得完善的类型提示，就会导致两侧都需要定义**相同但又不同**的ts定义，十分地麻烦。这时，笔者我想到，Nest.js和Next.js本质上都是一个node创建的服务器，不如将Next.js集成到Nest.js当中，让Nest.js提供给Next.js node服务器的能力，说干就干，让我开始尝试吧！
+最近一直使用Nest.js和Next.js做项目开发，这两款都是非常优秀的开源框架，且对于主要从事前端开发工作的我来说，由于其都基于npm生态，使用起来也比其他语言容易得多。Nextjs其主要是一款全栈的SSR的框架，而Nest.js则是纯后端的框架。对于Next.js，官方告诉我们可以在/api路径下自定义常规的api接口，但是由于middleware仅仅支持`Edge Runtime`这一运行时，很多功能上比较受限，加之/api路径和文件即路由的开发范式只适合简单接口的开发，并不适合大多数情况的接口开发。因此，我会使用Nest.jsl来完成后端接口的开发。然而，新的问题又随之出现。如果分开项目开发，且都采用TypeScript以获得完善的类型提示，就会导致两侧都需要定义**相同但又不同**的ts定义，十分地麻烦。这时，笔者我想到，Nest.js和Next.js本质上都是一个node创建的服务器，不如将Next.js集成到Nest.js当中，让Nest.js提供给Next.js node服务器的能力，说干就干，让我开始尝试吧！
 
 # 创建一个简单的nest服务。
 
@@ -94,7 +94,7 @@ export class NextMiddleware implements NestMiddleware {
 
 `app`即上文提到的`NextServer`，在整个项目中，我们需要的接口还是/api打头，为此如果请求路径以/api开始，继续由Nest处理（调用next函数），否则交给Next处理(handler句柄传入)。
 
-**上文提到的**`NextService`类实现如下；
+上文提到的`NextService`类实现如下；
 
 ```ts
 import { Injectable } from '@nestjs/common';
@@ -134,7 +134,7 @@ export class NextService {
 }
 ```
 
-**再创建一个**`NextModule`供`AppModule`中调用
+再创建一个`NextModule`供`AppModule`中调用
 
 ```ts
 import { Module } from '@nestjs/common';
@@ -213,7 +213,7 @@ async function bootstrap() {
 bootstrap();
 ```
 
-**此时的next已经实现了集成，但是原油的**`nest start`无法启动next的，且next部分的编译方式和nest部分的编译方式有所区别。为此使用：
+此时的next已经实现了集成，但是原有的`nest start`无法启动next的，且next部分的编译方式和nest部分的编译方式有所区别。为此使用：
 
 ```bash
 cross-env tsnd --project tsconfig.server.json --ignore-watch .next --watch next.config.ts --cls src/main.ts
@@ -298,15 +298,15 @@ cross-env tsnd --project tsconfig.server.json --ignore-watch .next --watch next.
 
 ![image-20250113004111938](https://static.zerotower.cn/images/2025/01/7fa897376f695c3a916a39466e1067ce.webp)
 
-**我们需要项目启动前使用tailwindcss编译css文件。**
+我们需要项目启动前使用tailwindcss编译css文件。
 
-**为此新增一个**`dev:tailwindcss`命令
+为此新增一个`dev:tailwindcss`命令
 
 ```bash
 tailwindcss -i ./src/app/globals.css -o ./src/app/output.css --watch
 ```
 
-**安装**[concurrently](https://www.npmjs.com/package/concurrently)用于同时执行多个命令`dev:all`
+安装[concurrently](https://www.npmjs.com/package/concurrently)用于同时执行多个命令`dev:all`
 
 ```bash
 pnpm add concurrently -D
@@ -316,6 +316,6 @@ pnpm add concurrently -D
 "concurrently \"npm run dev:tailwind\" \"npm run dev\""
 ```
 
-**运行**`pnpm dev:all`后，浏览器显示
+运行`pnpm dev:all`后，浏览器显示
 
 ![image-20250113005820080](https://static.zerotower.cn/images/2025/01/4a84c8846b9aa113544deb8ae7005935.webp)
