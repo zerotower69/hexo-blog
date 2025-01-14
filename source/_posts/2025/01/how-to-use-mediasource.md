@@ -284,3 +284,4 @@ ffmpeg -i bilibili.mp4 -c:v copy -c:a copy -movflags frag_keyframe+empty_moov ou
 3. [ffmpeg 实现mp4视频转换](https://21xrx.com/Articles/read_article/251040)
 4. [微软官网的一个使用mp4box的例子](https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/samples/dn551368(v=vs.85))
 5. [这篇提到了自适应网速的逻辑](https://developer.aliyun.com/article/1634463)
+5. [ffmpeg官网](https://www.ffmpeg.org/)
