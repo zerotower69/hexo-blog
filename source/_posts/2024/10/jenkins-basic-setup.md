@@ -7,7 +7,7 @@ tags:
 - jenkins
 - CI/CD
 title: Jenkins集成化部署环境准备
-updated: '2025-01-13T11:53:03.766+08:00'
+updated: '2025-01-14T22:38:54.445+08:00'
 ---
 **jenkins网上有许多的教程都是安装jenkins的docker镜像，通过启动docker容器服务进而使用的jenkins服务，但是后续使用docker部署项目，就需要在docker容器里支持 **`docker`和`docker-compose`命令。对应地，有使用宿主机的docker环境和dokcer in docker的解决方案，但无论怎样，都有数不尽的坑，并且本来大家使用的服务器资源也不会太多，docker容器里新建docker部署将更为受限，因此，建议大家和我一样使用单机非docker安装jenkins。
 
