@@ -126,6 +126,6 @@ githubcalendar:
 
 # 博客检索
 algolia:
-  applicationID: 'PXO0ONG3B1'
-  apiKey: 'e01a6c3c003fb0424d8a1f2c2d829a4b'
-  indexName: 'hexo'
+  applicationID: 'S9KEDYG366'
+  apiKey: '9149c0597a6283906ffef685f904c899'
+  indexName: 'zerotower'

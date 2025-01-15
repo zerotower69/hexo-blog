@@ -473,7 +473,7 @@ search:
   # Choose: algolia_search / local_search / docsearch
   # leave it empty if you don't need search
   use: algolia_search
-  placeholder:
+  placeholder: 请输入检索内容
 
   # Algolia Search
   algolia_search:
