@@ -535,7 +535,7 @@ comments:
   lazyload: false
   # Display comment count in post's top_img
   count: true
-  # Display comment count in Home Page
+  # Display comment count in Home 
   card_post_count: true
 
 # Disqus
@@ -616,10 +616,10 @@ facebook_comments:
 # https://github.com/imaegoo/twikoo
 twikoo:
   js: https://gcore.jsdelivr.net/npm/twikoo@1.6.8/dist/twikoo.all.min.js
-  envId: https://blog-comment-zerotowers-projects.vercel.app/
-  region:
+  envId: https://comment.zerotower.cn/
+  # region:
   # Use Twikoo visitor count as the page view count
-  visitor: false
+  visitor: true
   option:
 
 # Giscus
