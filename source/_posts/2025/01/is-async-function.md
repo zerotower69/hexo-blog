@@ -6,7 +6,7 @@ date: '2025-01-23T22:30:26.550583+08:00'
 tags:
 - javascript
 title: 判断函数是否有async 前缀
-updated: '2025-01-23T22:30:27.220+08:00'
+updated: '2025-02-07T19:58:21.612+08:00'
 ---
 # 问题
 
@@ -36,4 +36,20 @@ function isAsyncFn(fn){
 function isAsyncFn(fn){
   return fn.constructor.prototype[Symbol.toStringTag] === 'AsyncFunction'
 }
+```
+
+# 补充
+
+![](https://static.zerotower.cn/images/2025/02/10ff6714280baf4574169b8406a0b0c4.webp)
+
+可以看到，对于生成器函数，也可以使用`Symbol.toStringTag`来判断其类型，可有：
+
+```js
+function isGenerateFn(fn){
+  return fn.constructor.prototype[Symbol.toStringTag] === 'GeneratorFunction'
+}
+```
+
+```js
+
 ```
