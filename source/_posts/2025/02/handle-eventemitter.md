@@ -1,13 +1,14 @@
 ---
 abbrlink: ''
 categories:
-- - 前端手写
+  - - 前端手写
 date: '2025-02-09T18:57:06.149771+08:00'
 tags:
-- JavaScript
-- 面试
+  - JavaScript
+  - 面试
 title: 手写EventEmitter
 updated: '2025-02-09T18:57:06.919+08:00'
+description: 文章探讨了如何通过原型链与ES6类两种方式手写EventEmitter核心功能，详细解析了事件监听机制的实现要点。作者基于Node.js事件模块构建思路，设计了包含_events对象存储回调、_maxListeners限制等属性的类，实现了on/off/once/emit等方法，重点处理了事件注册、一次性监听器自动注销、回调函数作用域控制等技术难点，并特别指出传统写法与ES6类实现的差异，展现了事件驱动的底层原理及代码实践。
 ---
 ## 前言
 

@@ -1,15 +1,16 @@
 ---
 abbrlink: ''
 categories:
-- - nextjs
-- - 搭建组件库文档
+  - - nextjs
+  - - 搭建组件库文档
 date: '2025-01-11T23:37:01.971256+08:00'
 tags:
-- nextjs
-- react
-- 组件库
+  - nextjs
+  - react
+  - 组件库
 title: 'Next搭建组件库文档（二）- 支持markdown动态渲染 '
 updated: '2025-01-12T11:15:54.949+08:00'
+description: 本文详细讲解如何利用Next.js 14搭建组件库文档系统，通过配置@next/mdx支持Markdown本地渲染，结合remark-gfm、rehype-highlight等插件实现表格扩展、代码高亮功能。重点突破动态渲染技术，实现从packages子包自动加载并解析/docs/index.md文档，运用next-mdx-remote实现远程MDX渲染，配套SSG静态生成确保GitHub Pages部署效果，最终完成支持多模块动态路由的美观文档系统构建。
 ---
 # 导读
 

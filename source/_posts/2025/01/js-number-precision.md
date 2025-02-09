@@ -1,13 +1,14 @@
 ---
 abbrlink: ''
 categories:
-- - js基础知识
+  - - js基础知识
 date: '2025-01-23T22:07:39.701754+08:00'
 tags:
-- javascript
-- 面试
+  - javascript
+  - 面试
 title: Javascript Number精度问题与解决
 updated: '2025-01-23T22:07:40.276+08:00'
+description: JavaScript中由于采用IEEE 754双精度浮点数标准，存在0.1+0.2≠0.3等精度问题，主要因二进制无法精确表示部分十进制小数导致。文章解析了储存结构和安全整数范围，提出了手写小数截取算法，并推荐使用number-precision、bignumber.js等第三方库解决运算误差，适用于金融计算等高精度场景的需求处理。
 ---
 # 导读
 

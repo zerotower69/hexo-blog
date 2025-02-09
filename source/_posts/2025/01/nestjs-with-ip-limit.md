@@ -1,13 +1,14 @@
 ---
 abbrlink: ''
 categories:
-- - nextjs学习记录
+  - - nextjs学习记录
 date: '2025-01-12T17:17:27.282062+08:00'
 tags:
-- nestjs
-- 后端开发
+  - nestjs
+  - 后端开发
 title: nestjs使用redis实现ip限流
 updated: '2025-01-12T17:17:27.745+08:00'
+description: 本文介绍了利用NestJS守卫机制与Redis协作实现IP请求限流的方法，通过拦截接口请求提取用户IP并存储在Redis中进行访问计数，当单位时间请求超限时自动拦截。详细展示了守卫创建、Redis集成、定时任务重置计数及Nginx代理配置等步骤，有效防范资源滥用，适用于接口保护和AI服务配额管理等场景。
 ---
 # 导读
 

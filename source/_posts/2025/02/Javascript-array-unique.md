@@ -1,13 +1,14 @@
 ---
 abbrlink: ''
 categories:
-- - JavaScript
+  - - JavaScript
 date: '2025-02-07T19:52:11.316224+08:00'
 tags:
-- 手写题
-- 前端面试
+  - 手写题
+  - 前端面试
 title: JavaScript数组去重
 updated: '2025-02-07T19:52:12.878+08:00'
+description: 文章分析了JavaScript中10种数组去重方法的性能，从最优到最差排序。使用Set和Array.from的组合以O(n)时间复杂度居首，而依赖includes和indexOf的O(n²)方法效率较低，第三方库lodash因额外开销排名末尾。性能差异主要源于实现原理，高时效方法利用数据结构特性，低效方法则频繁遍历数组。
 ---
 # 导读
 

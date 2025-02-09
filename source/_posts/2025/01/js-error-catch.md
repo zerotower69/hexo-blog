@@ -1,13 +1,14 @@
 ---
 abbrlink: ''
 categories:
-- - js基础知识
+  - - js基础知识
 date: '2025-01-23T17:36:02.335992+08:00'
 tags:
-- 面试
-- javascript
+  - 面试
+  - javascript
 title: JS中错误捕获小结
 updated: '2025-01-23T17:36:04.843+08:00'
+description: JavaScript中错误捕获常用方法包括：setTimeout异步回调需内部使用try-catch处理，Promise可通过.catch捕获异常，全局错误可通过window.onerror或error事件监听实现。不同场景需采用对应策略，如异步任务需关注执行上下文，Promise需显式捕获，全局监听则适合统一处理未捕获异常及埋点上报。
 ---
 # 导读
 

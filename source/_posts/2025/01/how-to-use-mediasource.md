@@ -1,12 +1,13 @@
 ---
 abbrlink: ''
 categories:
-- - 音视频开发
+  - - 音视频开发
 date: '2025-01-14T22:34:30.058418+08:00'
 tags:
-- mediasource
+  - mediasource
 title: mediaSource使用记录
 updated: '2025-01-14T22:34:32.654+08:00'
+description: 作者在利用MediaSource实现视频分片加载缓冲区时，参考了MDN文档及GitHub案例，通过SourceBuffer管理媒体流并借助HTTP Range请求实现分段加载。实践过程中发现视频格式兼容性问题，尝试使用ffmpeg进行MP4格式转换后仍出现SourceBuffer状态异常及解码错误。尽管应用了碎片化编码参数，但浏览器端仍无法正常播放，需进一步调试MIME类型匹配与媒体片段边界对齐问题，相关技术细节涉及mp4box工具分析与多篇开发文档研究。
 ---
 # 导读
 

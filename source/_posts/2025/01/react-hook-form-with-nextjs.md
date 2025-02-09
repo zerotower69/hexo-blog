@@ -1,13 +1,14 @@
 ---
 abbrlink: ''
 categories:
-- - nextjs
+  - - nextjs
 date: '2025-01-11T20:59:23.666357+08:00'
 tags:
-- nextjs
-- react
+  - nextjs
+  - react
 title: nextjs 使用react-hook-form和zod实现登录表单验证和提交
 updated: '2025-01-11T20:59:25.854+08:00'
+description: 文章介绍了在Next.js应用中如何利用react-hook-form和zod实现登录表单的验证与提交，通过定义Zod Schema进行数据校验并生成TypeScript类型，结合hookform/resolvers完成集成，详细展示了表单UI错误提示、提交按钮状态控制及异步处理流程，提升开发效率与用户体验。
 ---
 ---
 

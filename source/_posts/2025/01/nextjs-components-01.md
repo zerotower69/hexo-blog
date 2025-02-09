@@ -1,15 +1,16 @@
 ---
 abbrlink: ''
 categories:
-- - nextjs
-- - 搭建组件库文档
+  - - nextjs
+  - - 搭建组件库文档
 date: '2025-01-11T23:18:03.040285+08:00'
 tags:
-- nextjs
-- 组件库
-- 文档
+  - nextjs
+  - 组件库
+  - 文档
 title: Next.js搭建组件库文档（一）项目的初始化配置
 updated: '2025-01-11T23:18:03.631+08:00'
+description: 本文详细讲解了基于Next.js 14.2.15搭建React组件库文档的完整流程，涵盖pnpm工作区配置、changesets版本管理、commitlint提交规范及GitHub Actions自动化部署。通过Monorepo架构组织组件库与文档站点，重点说明TypeScript版本控制、husky拦截校验配置要领，并针对GitHub Pages部署中的路径配置与工作流触发机制进行实战解析，提供可复用的持续集成部署方案。
 ---
 # 导读
 

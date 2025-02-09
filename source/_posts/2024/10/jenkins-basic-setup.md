@@ -1,13 +1,14 @@
 ---
 abbrlink: ''
 categories:
-- - 运维开发
+  - - 运维开发
 date: '2024-10-01T18:16:45.169241+08:00'
 tags:
-- jenkins
-- CI/CD
+  - jenkins
+  - CI/CD
 title: Jenkins集成化部署环境准备
 updated: '2025-01-14T22:38:54.445+08:00'
+description: 本文详细介绍了在CentOS7系统上通过非Docker方式部署Jenkins环境的完整流程，涵盖JDK17安装、Jenkins服务配置与内存优化，包括修改启动参数限制内存至2G、设为root权限运行等关键步骤。同时指导了Gitee插件、Blue Ocean等常用扩展安装，并补充了docker与docker-compose的环境搭建方案，针对国内网络环境优化安装源，解决了低配服务器部署中的典型问题。
 ---
 **jenkins网上有许多的教程都是安装jenkins的docker镜像，通过启动docker容器服务进而使用的jenkins服务，但是后续使用docker部署项目，就需要在docker容器里支持 **`docker`和`docker-compose`命令。对应地，有使用宿主机的docker环境和dokcer in docker的解决方案，但无论怎样，都有数不尽的坑，并且本来大家使用的服务器资源也不会太多，docker容器里新建docker部署将更为受限，因此，建议大家和我一样使用单机非docker安装jenkins。
 

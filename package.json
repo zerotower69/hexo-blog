@@ -33,7 +33,9 @@
     "hexo-theme-landscape": "^1.0.0",
     "hexo-util": "^3.3.0",
     "hexo-wordcount": "^6.0.1",
-    "husky": "^9.1.7"
+    "husky": "^9.1.7",
+    "js-yaml": "^4.1.0",
+    "openai": "^4.83.0"
   },
   "devDependencies": {
     "husky": "^8.0.0"

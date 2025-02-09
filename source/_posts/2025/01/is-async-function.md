@@ -1,12 +1,13 @@
 ---
 abbrlink: ''
 categories:
-- - js基础知识
+  - - js基础知识
 date: '2025-01-23T22:30:26.550583+08:00'
 tags:
-- javascript
+  - javascript
 title: 判断函数是否有async 前缀
 updated: '2025-02-07T19:58:21.612+08:00'
+description: JavaScript中判断函数是否为async可通过检查其构造函数的原型属性`Symbol.toStringTag`是否为'AsyncFunction'实现，例如`fn.constructor.prototype[Symbol.toStringTag] === 'AsyncFunction'`。类似原理也可用于识别生成器函数（检查'GeneratorFunction'属性），该方法基于对象内部标识精准区分各函数类型。
 ---
 # 问题
 

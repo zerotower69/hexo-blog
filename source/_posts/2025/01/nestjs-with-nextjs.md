@@ -1,13 +1,14 @@
 ---
 abbrlink: ''
 categories:
-- - nestjs
+  - - nestjs
 date: '2025-01-13T01:03:39.877828+08:00'
 tags:
-- nestjs
-- nextjs
+  - nestjs
+  - nextjs
 title: 使用nestjs启动nextjs
 updated: '2025-01-13T11:58:24.718+08:00'
+description: 作者探讨在Nest.js框架中集成Next.js的实践方法，旨在解决分离开发时的接口冗余定义问题。通过利用Express中间件机制，将Next.js请求处理器接入Nest服务端，实现API路由（/api）以外请求的统一处理。文中详细展示了跨框架中间件设计、Next服务封装、模块整合及启动脚本配置过程，并针对TailwindCSS编译维护提供了并发编译方案，最终搭建起类型共享的统一全栈开发环境。
 ---
 # 导读
 

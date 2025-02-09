@@ -1,14 +1,15 @@
 ---
 abbrlink: z
 categories:
-- - JavaScript
+  - - JavaScript
 date: '2025-01-11T17:36:45.852477+08:00'
 tags:
-- promise
-- javascript
-- 前端
+  - promise
+  - javascript
+  - 前端
 title: 一网打尽手写Promise
 updated: '2025-01-11T17:36:46.304+08:00'
+description: 文章详解手写Promise的实现原理，从Promise A+规范入手，阐述状态机转换、then方法链式调用及微任务队列处理机制。结合queueMicroTask API分析异步任务调度原理，手写各个核心方法（then/catch/finally）及静态方法（all/any/race）。通过测试验证符合规范，并解析async/await作为语法糖的底层Promise逻辑。附带两则事件循环面试题，帮助突破异步编程核心难点。
 ---
 # 导读
 
