@@ -57,8 +57,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       hexo-theme-butterfly:
-        specifier: ^5.2.2
-        version: 5.3.0
+        specifier: ^5.3.2
+        version: 5.3.2
       hexo-theme-landscape:
         specifier: ^1.0.0
         version: 1.0.0
@@ -568,8 +568,8 @@ packages:
     resolution: {integrity: sha512-u4s0ty9Aew6jV+a9oMrXBwhrRpUQ0U8PWM/88a5aHgDru58VY81mVrxOFxs788NAsWQ8OvsJtF5m7mnXoRnSIA==}
     engines: {node: '>=12.13.0'}
 
-  hexo-theme-butterfly@5.3.0:
-    resolution: {integrity: sha512-11TKcXeMymWpYPdhWnEyp3phn8w0zCGH4fr25H0wfVyWKNZLlxERCw/uzNNuJ2IySDNoQa0XGyJM2o26BmoeOA==}
+  hexo-theme-butterfly@5.3.2:
+    resolution: {integrity: sha512-yLDYSBlnDVHmGHRKzjgNOCYhayB/4c/ccbMoq1DX2uTgl46dDKWC87GViFwW4peU6Cn/p1R2Y2SwU6YmRqjMZA==}
 
   hexo-theme-landscape@1.0.0:
     resolution: {integrity: sha512-bWQJWMqQI78wWiJPQZq5pJBH20TM442ShCaHGRetuEgMraxH0OKxB3NTupJzNEkzEk8DV2yrdizkXdKN6i501A==}
@@ -1699,7 +1699,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  hexo-theme-butterfly@5.3.0:
+  hexo-theme-butterfly@5.3.2:
     dependencies:
       hexo-renderer-pug: 3.0.0
       hexo-renderer-stylus: 3.0.1
