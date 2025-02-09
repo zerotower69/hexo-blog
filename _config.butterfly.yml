@@ -1136,7 +1136,7 @@ electric_clock:
   clock_css: https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css
   clock_js: https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.js
   ip_api: https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0
-  qweather_key: {{HEFENG_WEATHER_KEY}} # 和风天气key
-  gaud_map_key: {{GAODE_KEY}} # 高德地图web服务key
+  qweather_key: e8df367e08f74f4abd1f779e5a15589f # 和风天气key
+  gaud_map_key: 9c2a9b85aa38b4c8b1ffb98392b41796 # 高德地图web服务key
   default_rectangle: false # 开启后将一直显示rectangle位置的天气，否则将获取访问者的地理位置与天气
   rectangle: 112.6534116,27.96920845 # 获取访问者位置失败时会显示该位置的天气，同时该位置为开启default_rectangle后的位置

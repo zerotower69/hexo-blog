@@ -4,9 +4,9 @@ const path = require("path");
 const CONFIG_FILES = [path.join(process.cwd(), "_config.yml"), path.join(process.cwd(), "_config.butterfly.yml")];
 
 function replaceEnvVars(content) {
-    console.log(JSON.stringify(process.env));
+    // console.log(JSON.stringify(process.env));
     return content.replace(/\{\{\s*(\w+)\s*\}\}/g, (match, key) => {
-        console.log(match, key, process.env[key]);
+        // console.log(match, key, process.env[key]);
 
         return process.env[key] || match;
     });
