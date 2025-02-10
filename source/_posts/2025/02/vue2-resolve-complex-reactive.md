@@ -149,5 +149,4 @@ Object.keys(item)
             })
 ```
 
-本文的灵感来源于：[思否技术圈](https://segmentfault.com/q/1010000023568512)
-欢迎大家的补充以及光临[ZeroTower的前端小屋](https://www.zerotower.cn)
+本文的灵感来源于：[思否技术圈](https://segmentfault.com/q/1010000023568512)](https://www.zerotower.cn)
