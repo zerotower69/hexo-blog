@@ -1,14 +1,14 @@
 ---
 abbrlink: ''
 categories:
-  - - cesium的学习
+- - cesium的学习
 date: '2025-01-12T18:20:36.222132+08:00'
-tags:
-  - cesium
-  - 前端开发
-title: tiCesium全框架跟随弹窗的实现
-updated: '2025-01-12T18:20:36.772+08:00'
 description: 文章介绍了如何在Cesium中实现跨框架的跟随式弹窗，通过封装TrackModel基类结合Cesium.postRender机制，解决了组件复用性低、框架耦合度高的问题，实现了点位动态跟随、相机高度自适应缩放及飞行定位功能。采用组件化设计分离UI与核心逻辑，并适配Vue2/Vue3/React等框架，通过自动化导入和框架特性对接提升开发效率。
+tags:
+- cesium
+- 前端开发
+title: Cesium全框架跟随弹窗的实现
+updated: '2025-02-10T08:51:29.073+08:00'
 ---
 # 导读
 
