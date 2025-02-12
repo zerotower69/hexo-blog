@@ -7,13 +7,15 @@ tags:
 - vue3
 - 源码分析
 title: vue3中provide/inject实现原理
-updated: '2025-02-11T08:55:27.278+08:00'
+updated: '2025-02-12T10:17:26.745+08:00'
 ---
 # 导读
 
 Vue有一个注入全局上下文的机制，叫`provide/inject`，其可以向子级组件注入一些属性，无论嵌套得有多深。其效果和React的`Context`类似。本文将通过具体的源码详细说明其原理实现。
 
 ![prop drilling diagram](https://static.zerotower.cn/images/2025/02/d3d1199e178e9e53bea0a5858877c9a1.webp)
+
+下方所述代码在[ `/core/packages/runtime-core/src/apiInject.ts`](https://github.com/vuejs/core/blob/2ab70c202fc54577d50ec6818870391ad8038a2a/packages/runtime-core/src/apiInject.ts#L11)
 
 # provide
 
