@@ -60,8 +60,8 @@ importers:
         specifier: ^5.2.2
         version: 5.3.0
       hexo-theme-landscape:
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.1.0
+        version: 1.1.0
       hexo-util:
         specifier: ^3.3.0
         version: 3.3.0
@@ -602,8 +602,8 @@ packages:
   hexo-theme-butterfly@5.3.0:
     resolution: {integrity: sha512-11TKcXeMymWpYPdhWnEyp3phn8w0zCGH4fr25H0wfVyWKNZLlxERCw/uzNNuJ2IySDNoQa0XGyJM2o26BmoeOA==}
 
-  hexo-theme-landscape@1.0.0:
-    resolution: {integrity: sha512-bWQJWMqQI78wWiJPQZq5pJBH20TM442ShCaHGRetuEgMraxH0OKxB3NTupJzNEkzEk8DV2yrdizkXdKN6i501A==}
+  hexo-theme-landscape@1.1.0:
+    resolution: {integrity: sha512-nszjixBEiEDZjf7glAGbHg0nKGHZdUDwzFVVdRDeu4FeHfGcY5CZNl9sF4vSligjnD8IwFXpDfx5E+GRmNKvWg==}
 
   hexo-util@3.3.0:
     resolution: {integrity: sha512-YvGngXijE2muEh5L/VI4Fmjqb+/yAkmY+VuyhWVoRwQu1X7bmWodsfYRXX7CUYhi5LqsvH8FAe/yBW1+f6ZX4Q==}
@@ -1807,7 +1807,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  hexo-theme-landscape@1.0.0: {}
+  hexo-theme-landscape@1.1.0: {}
 
   hexo-util@3.3.0:
     dependencies:
