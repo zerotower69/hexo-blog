@@ -5,7 +5,7 @@ date: '2025-02-16T23:44:03.208202+08:00'
 tags:
 - JavaScript
 title: JavaScript对象的遍历
-updated: '2025-02-16T23:44:06.009+08:00'
+updated: '2025-02-17T10:36:37.265+08:00'
 ---
 # 导读
 
@@ -51,11 +51,3 @@ const keys = Object.keys(object);
 # 总结
 
 如果需要查找包含原型继承的属性，用`for...in..`，否则用`Object.keys()`。因为`for...in...`需要查找原型链，其效率会比较慢，不如`Object.keys()`。
-
-```js
-
-```
-
-```js
-
-```
