@@ -6,7 +6,7 @@ tags:
 - react
 - webpack
 title: 使用webpack启动react
-updated: '2025-02-21T20:58:35.428+08:00'
+updated: '2025-02-21T22:18:15.754+08:00'
 ---
 ```
 
@@ -28,6 +28,7 @@ updated: '2025-02-21T20:58:35.428+08:00'
 ```bash
 npm i -D webpack@5 webpack-cli webpack-dev-server
 ```
+
 # 安装babel、loader、htmlwebpackplugin
 
 
@@ -44,6 +45,7 @@ npm i -D webpack@5 webpack-cli webpack-dev-server
 npm i -D @babel/core @babel/preset-env @babel/preset-react babel
 -loader style-loader css-loader html-webpack-plugin
 ```
+
 # webpack的配置文件
 
 注意入口文件``main.js`、`module.rules`以及`plugin`的配置，并指定输出的文件名和输出路径；resolve负责指定需要被解析的文件格式。
@@ -88,6 +90,7 @@ module.exports = {
   },
 };
 ```
+
 # 配置babel文件
 
 还需要配置babel文件，告诉babel如何解析React的JSX。
@@ -99,6 +102,7 @@ module.exports = {
   "presets": ["@babel/preset-env", "@babel/preset-react"]
 }
 ```
+
 # 配置package.json中scripts脚本
 
 ```json
@@ -109,4 +113,5 @@ module.exports = {
   },
 }
 ```
+
 使用`npm run start`开发模式下启动，使用`npm run build`打包模式。
