@@ -1,13 +1,14 @@
 ---
 abbrlink: ''
 categories:
-- - 前端手写
+  - - 前端手写
 date: '2025-02-10T11:16:27.436448+08:00'
 tags:
-- JavaScript
-- 面试
+  - JavaScript
+  - 面试
 title: JavaScript数组扁平化
 updated: '2025-02-10T11:16:27.897+08:00'
+description: 本文介绍了JavaScript数组扁平化的三种方法：递归法、迭代法以及利用JS特性的toString + split法。递归法通过判断子项是否为数组进行递归处理，迭代法则利用`Array.prototype.some()`和`concat`实现扁平化。最后，通过JS的`toString`和`split`特性快速实现扁平化。面试时建议优先考虑迭代法，避免递归的复杂性，同时掌握JS基础特性也能提供更简洁的解决方案。
 ---
 # 递归法
 

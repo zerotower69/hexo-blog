@@ -3,9 +3,10 @@ abbrlink: ''
 categories: []
 date: '2025-02-16T23:44:03.208202+08:00'
 tags:
-- JavaScript
+  - JavaScript
 title: JavaScript对象的遍历
 updated: '2025-02-17T10:36:37.265+08:00'
+description: 文章介绍了JavaScript中遍历对象的两种主要方法：`for...in`和`Object.keys()`。`for...in`可以遍历对象的所有字符串属性，包括继承的属性，而`Object.keys()`仅返回对象自身的可枚举属性。文章建议根据需求选择合适的方法，`for...in`适用于需要遍历继承属性的场景，而`Object.keys()`在仅需自身属性时效率更高。
 ---
 # 导读
 

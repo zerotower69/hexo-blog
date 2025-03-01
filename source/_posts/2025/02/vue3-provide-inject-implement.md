@@ -1,13 +1,14 @@
 ---
 abbrlink: ''
 categories:
-- - vue源码实现
+  - - vue源码实现
 date: '2025-02-11T08:55:26.466635+08:00'
 tags:
-- vue3
-- 源码分析
+  - vue3
+  - 源码分析
 title: vue3中provide/inject实现原理
 updated: '2025-02-12T10:17:26.745+08:00'
+description: Vue3中的`provide/inject`机制通过组件实例的`provides`属性实现数据注入，子组件通过原型链继承父组件的`provides`，确保数据隔离与共享。`provide`用于注入数据，`inject`用于获取数据，支持默认值和函数处理，适用于深层嵌套组件的上下文传递。
 ---
 # 导读
 

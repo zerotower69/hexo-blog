@@ -3,9 +3,10 @@ abbrlink: ''
 categories: []
 date: '2025-02-13T22:37:45.434867+08:00'
 tags:
-- Vue
+  - Vue
 title: vue中的JSX如何实现
 updated: '2025-02-13T22:37:46.391+08:00'
+description: Vue3和React都支持JSX语法，通过Babel插件将JSX编译为生成虚拟节点的函数（React.createElement和Vue的h函数）。Vue3的JSX支持插槽功能，比React的children更灵活，底层行为也有所不同。
 ---
 # 导读
 

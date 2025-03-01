@@ -1,12 +1,13 @@
 ---
 abbrlink: ''
 categories:
-- - react注意事项
+  - - react注意事项
 date: '2025-02-14T11:58:19.583265+08:00'
 tags:
-- react
+  - react
 title: 区分react的useEffect和useLayoutEffect
 updated: '2025-02-14T11:58:20.139+08:00'
+description: 本文详细区分了React中的`useEffect`和`useLayoutEffect`，重点分析了它们的执行时机和使用场景。`useEffect`适用于异步任务如数据获取和事件订阅，而`useLayoutEffect`则用于需要立即执行的DOM操作和视觉优化，如图片加载、字体调整和锚点定位等。通过具体代码示例，展示了如何在不同场景中选择合适的钩子函数。
 ---
 # 导读
 

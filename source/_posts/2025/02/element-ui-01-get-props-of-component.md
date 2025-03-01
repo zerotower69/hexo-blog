@@ -1,12 +1,13 @@
 ---
 abbrlink: ''
 categories:
-- - element组件库
+  - - element组件库
 date: '2025-02-10T08:34:02.796716+08:00'
 tags:
-- element-plus
+  - element-plus
 title: element组件库系列（一）--如何捕获组件的props定义
 updated: '2025-02-10T08:34:03.301+08:00'
+description: 本文介绍了如何通过TypeScript捕获Element-Plus组件的props类型定义，并进一步封装。作者在封装通用列表组件时，发现Element-Plus未直接提供props类型导出，通过分析组件setup函数的参数类型，结合`Parameters`、`typeof`和`Exclude`等TypeScript工具，成功提取并封装了所需的props类型，解决了类型提示问题。
 ---
 ---
 theme: vue-pro

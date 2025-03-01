@@ -1,12 +1,13 @@
 ---
 abbrlink: ''
 categories:
-- - TypeScript基础
+  - - TypeScript基础
 date: '2025-02-18T19:52:32.233310+08:00'
 tags:
-- TypeScript
+  - TypeScript
 title: TypeScript中的泛型
 updated: '2025-02-18T19:52:32.758+08:00'
+description: TypeScript中的泛型通过类型参数实现，允许在定义函数、类、接口时使用占位符，动态指定具体类型。泛型提高代码复用性和类型安全性，适用于处理多种类型的场景，如通用函数、数据结构、类型约束和工具类型。
 ---
 # 导读
 

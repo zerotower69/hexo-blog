@@ -7,12 +7,14 @@ require("dotenv").config();
 
 async function generateAbstract(content) {
   const openai = new OpenAI({
-    baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1",
-    apiKey: process.env.DASHSCOPE_API_KEY,
+    // baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    baseURL:"https://api.deepseek.com",
+    // apiKey: process.env.DASHSCOPE_API_KEY,
+    apiKey: process.env.DEEPSEEK_API_KEY,
   });
 
   const completion = await openai.chat.completions.create({
-    model: "deepseek-r1", // 此处以 deepseek-r1 为例，可按需更换模型名称。
+    model: "deepseek-chat", // 模型名称
     messages: [
       {
         role: "user",

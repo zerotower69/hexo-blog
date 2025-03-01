@@ -3,9 +3,10 @@ abbrlink: ''
 categories: []
 date: '2025-02-10T10:37:42.275842+08:00'
 tags:
-- JavaScript
+  - JavaScript
 title: JavaScript中的伪数组
 updated: '2025-02-10T10:37:42.937+08:00'
+description: 伪数组具有数组的部分特征，如.length属性和下标访问，但缺少数组的原型方法且数据类型为Object。伪数组长度不可变，而数组长度可变。两者均可通过for...of遍历，伪数组可通过Array.from()或Array.prototype.slice()转换为数组。常见的伪数组包括arguments对象等。
 ---
 # 基本概念
 

@@ -5,6 +5,7 @@ date: '2025-02-28T23:00:46.060573+08:00'
 tags: []
 title: title
 updated: '2025-02-28T23:00:46.729+08:00'
+description: 本文深入分析了`html-webpack-plugin`的源码执行流程，重点探讨了`webpack`中`plugin`的实现原理。通过解读源码，展示了如何通过`compiler`和`compilation`对象处理静态资源，并详细解析了生成HTML文件的核心逻辑。文章还提供了一个简化版的`html-webpack-plugin`实现，帮助读者理解如何自定义`webpack`插件。
 ---
 # 导读
 

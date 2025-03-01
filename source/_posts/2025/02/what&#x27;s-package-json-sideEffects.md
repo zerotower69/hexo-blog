@@ -1,12 +1,13 @@
 ---
 abbrlink: ''
 categories:
-- - 前端概念
+  - - 前端概念
 date: '2025-02-16T23:42:23.419035+08:00'
 tags:
-- 工程化
+  - 工程化
 title: package.json中的sideEffects
 updated: '2025-02-16T23:42:24.829+08:00'
+description: '`package.json`中的`sideEffects`属性用于标识模块是否具有副作用，影响Tree Shaking的优化效果。正确配置该属性可帮助打包工具安全移除未使用代码，减少打包体积。开发库时需确保正确标记副作用，并结合Babel配置测试Tree Shaking效果，避免应用行为异常。'
 ---
 # 导读
 

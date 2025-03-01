@@ -1,12 +1,13 @@
 ---
 abbrlink: ''
 categories:
-- - 技术杂谈
+  - - 技术杂谈
 date: '2025-02-20T08:58:03.693427+08:00'
 tags:
-- javascript
+  - javascript
 title: JavaScript脚本的延迟加载
 updated: '2025-02-20T08:58:04.183+08:00'
+description: 本文介绍了JavaScript脚本延迟加载的几种方法，包括使用`defer`和`async`属性、动态创建`script`标签、使用动态加载库如`requireJS`和`systemjs`，以及通过`IntersectionObserver`实现懒加载。这些方法各有优缺点，适用于不同场景，如广告接入、长页面内容等，以提高页面加载性能。
 ---
 # 导读
 

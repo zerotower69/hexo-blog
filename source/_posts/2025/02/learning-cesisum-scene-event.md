@@ -1,12 +1,13 @@
 ---
 abbrlink: ''
 categories:
-- - cesium的学习
+  - - cesium的学习
 date: '2025-02-10T08:52:12.596998+08:00'
 tags:
-- cesium
+  - cesium
 title: cesium的场景渲染事件
 updated: '2025-02-10T08:52:12.997+08:00'
+description: Cesium中的场景渲染事件包括`preUpdate`、`postUpdate`、`preRender`和`postRender`，分别对应场景更新前后和渲染前后的事件触发。通过`addEventListener`和`removeEventListener`可以管理这些事件。`postUpdate`和`postRender`虽然看似同时触发，但实际涉及大量WebGL上下文更新和矩阵计算，不可等同视之。
 ---
 # 导读
 

@@ -1,12 +1,13 @@
 ---
 abbrlink: ''
 categories:
-- - css基础
+  - - css基础
 date: '2025-02-10T22:49:24.096171+08:00'
 tags:
-- css
+  - css
 title: css flexbox布局-flex属性
 updated: '2025-02-14T12:00:51.886+08:00'
+description: 本文详细介绍了CSS Flexbox布局中的`flex`属性，包括其三个子属性`flex-grow`、`flex-shrink`和`flex-basis`的作用及默认值。通过多个代码示例，展示了`flex`属性的常见简写形式及其应用场景，如实现三等分布局、固定侧边栏与动态主内容区、响应式收缩等。文章还通过图示直观展示了不同`flex`设置下的布局效果，帮助读者更好地理解和应用Flexbox布局。
 ---
 # flex属性介绍
 

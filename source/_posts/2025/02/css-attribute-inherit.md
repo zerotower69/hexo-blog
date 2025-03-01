@@ -5,6 +5,7 @@ date: '2025-02-21T23:25:57.176544+08:00'
 tags: []
 title: css属性的继承
 updated: '2025-02-21T23:25:57.651+08:00'
+description: 文章探讨了CSS属性的继承性，列出了可继承的属性如`color`、`font-family`等，以及不可继承的属性如`background`、`border`等。通过`inherit`关键字可以强制继承父级属性，帮助开发者更好地理解和使用CSS继承机制。
 ---
 # 导读
 

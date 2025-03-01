@@ -3,10 +3,11 @@ abbrlink: ''
 categories: []
 date: '2025-02-21T20:58:34.657032+08:00'
 tags:
-- react
-- webpack
+  - react
+  - webpack
 title: 使用webpack启动react
 updated: '2025-02-21T22:18:15.754+08:00'
+description: 本文介绍了如何通过webpack自定义配置来启动React应用，摆脱对脚手架的依赖。内容包括安装webpack、babel及相关loader，配置webpack和babel文件，以及设置package.json中的脚本命令，帮助开发者实现更灵活的打包和开发环境配置。
 ---
 ```
 
