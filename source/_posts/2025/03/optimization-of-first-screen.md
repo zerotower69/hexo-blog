@@ -46,7 +46,7 @@ server {
 
 ## 使用CDN
 
-也可以使用CDN，一些三方库可以通过`webpack`的``external`配置或者`vite`的`globals`，相关资源通过`<script>`标签加载CDN资源实现。
+也可以使用CDN，一些三方库可以通过`webpack`的`external`配置或者`vite`的`globals`，相关资源通过`<script>`标签加载CDN资源实现。
 
 ```js
 // webpack.config.js
